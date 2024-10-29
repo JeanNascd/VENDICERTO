@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+    --cor00: #ffd21f;
+    --cor01: #552583;
+    --cor02: #333333;
+    --cor03: #e9ecef;
+    --cor04: #FFFFFF;
+
+    --fonte-padrao: 'Open Sans', sans-serif;
+    --fonte-secundaria: 'Arial', 'Helvetica';
+}
+
+body {
+    font-family: var(--fonte-padrao);
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor02) !important;
+}
+/* Define o fundo da navbar*/
+.bcg_CinzaEscuro {
+    background-color: #333333;
+}
+
+/* Cabeçalhos */
+h1 {
+    font-size: 2rem !important;
+    color: var(--cor02);
+    text-align: center;
+    background-color: var(--cor00);
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 80%;
+    margin: 20px auto;
+}
+
+h2 {
+    font-size: 1rem !important;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0.75rem;
+    border: 1px solid var(--cor01);
+    border-radius: 6px;
+    background-color: var(--cor04);
+}
+
+/* Estilo da calculadora */
+.calculo-taxas {
+    max-width: 600px;
+    margin-top: 2rem;
+    margin: 0 auto;
+    padding: 1.25rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: var(--cor03);
+}
+
+/* Campos de formulário */
+.campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+/* Estilos de campo */
+label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"], input[type="number"], input[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilo de contêiner de rádio */
+.radio-container {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Botão de envio */
+input[type="button"] {
+    background-color: var(--cor01);
+    color: var(--cor04);
+    font-size: 1rem;
+    cursor: pointer;
+    grid-column: span 2;
+}
+
+input[type="button"]:hover {
+    background-color: var(--cor02);
+}
+
+/* Área de resultado */
+.resultado {
+    margin-top: 1.25rem;
+    padding: 0.75rem;
+    background-color: var(--cor03);
+    border-radius: 8px;
+    grid-column: span 2;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .calculo-taxas h1 {
+        font-size: 1.75rem;
+        max-width: 100%;
+    }
+
+    .campos {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+    }
+
+    .calculo-taxas {
+        padding: 1rem;
+    }
+
+    .campos {
+        gap: 0.75rem;
+    }
+
+    input[type="text"], input[type="number"], input[type="submit"] {
+        padding: 0.5rem;
+    }
+}

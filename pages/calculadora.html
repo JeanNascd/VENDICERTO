@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de taxas</title>
+    <link rel="stylesheet" href="../styles/calculadora.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body>
+  <!-- Menu -->
+  <body class="bcg_Amarelo">
+    <nav class="navbar navbar-expand-lg bcg_CinzaEscuro" data-bs-theme="dark">
+        <div class="container-fluid d-flex">
+            <div>
+            <a class="navbar-brand" href="#">
+                <img src="../images/logo_vendiCerto.png" alt="Logotipo VendiCerto" width="70" height="65">
+            </a>
+            </div>
+            <div>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link cor_Branco mx-3" href="../pages/calculadora.html">CALCULADORA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link cor_Branco mx-3" href="../pages/meusprodutos.html">MEUS PRODUTOS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link cor_Branco mx-3" href="../pages/configuracoes.html">CONFIGURAÇÕES</a>
+              </li>.
+              <li class="nav-item">
+                <a class="nav-link cor_Branco mx-3" href="../pages/ajuda.html">AJUDA</a>
+              </li>
+              <li>
+                <a href="../index.html">
+                  <button type="button" class="btn btn-warning" href="../index.html">SAIR</button>
+              </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </nav>  
+    <main class="calculo-taxas">
+        <h1>Cálculo de Taxas</h1>
+        <h2> Insira as informações a seguir para realizar seu cálculo. </h2>
+        
+        <!-- Formulário -->
+        <form class="campos">
+            <fieldset>
+                <label for="produto">Produto:</label>
+                <input type="text" id="produto" name="produto" placeholder="Nome do produto" aria-label="Produto">
+            </fieldset>
+
+            <fieldset>
+                <label for="embalagem">Embalagem:</label>
+                <input type="text" id="embalagem" name="embalagem" placeholder="Tipo de embalagem" aria-label="Embalagem">
+            </fieldset>
+
+            <fieldset>
+                <legend>Frete grátis?</legend>
+                <div class="radio-container">
+                    <input type="radio" id="frete-gratis-sim" name="frete-gratis" value="sim" aria-label="Frete grátis sim">
+                    <label for="frete-gratis-sim">Sim</label>
+                    
+                    <input type="radio" id="frete-gratis-nao" name="frete-gratis" value="nao" aria-label="Frete grátis não">
+                    <label for="frete-gratis-nao">Não</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <label for="valor-frete">Valor do frete:</label>
+                <input type="number" id="valor-frete" name="valor-frete" placeholder="Valor do frete" min="0" aria-label="Valor do frete">
+            </fieldset>
+
+            <fieldset>
+                <label for="outros-custos">Outros custos:</label>
+                <input type="number" id="outros-custos" name="outros-custos" placeholder="Outros custos" min="0" aria-label="Outros custos">
+            </fieldset>
+
+            <fieldset>
+                <label for="margem-lucro">Margem de lucro (%):</label>
+                <input type="number" id="margem-lucro" name="margem-lucro" placeholder="Margem de lucro" min="0" aria-label="Margem de lucro">
+            </fieldset>
+
+            <!-- Botão de enviar -->
+            <input type="button" value="Calcular" onclick="window.location.href='resultados.html'">
+
+
+        <!-- Área de resultado -->
+        <div class="resultado"></div>
+    </main>
+</body>
+</html>
