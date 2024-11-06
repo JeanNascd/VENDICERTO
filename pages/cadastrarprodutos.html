@@ -64,23 +64,23 @@
                 <!-- Inputs -->
                 <div class="col-md-8">
                     <label for="formGroupExampleInput" class="form-label">Descrição</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Descrição do produto">
+                    <input type="text" class="form-control" id="desc" placeholder="Descrição do produto">
                 </div>
                 <div class="col-md-4">
                     <label for="formGroupExampleInput2" class="form-label">SKU</label>
-                    <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Nº do SKU">
+                    <input type="number" class="form-control" id="sku" placeholder="Nº do SKU">
                 </div>
                 <div class="col-md-6">
                     <label for="formGroupExampleInput2" class="form-label">Preço</label>
-                    <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Preço do produto">
+                    <input type="number" class="form-control" id="prec" placeholder="Preço do produto" min="0">
                 </div>
                 <div class="col-md-6">
                     <label for="formGroupExampleInput2" class="form-label">Peso</label>
-                    <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Peso do produto">
+                    <input type="number" class="form-control" id="pes" placeholder="Peso do produto" min="0">
                 </div>
                 <div class="col-md-12">
                     <label for="formGroupExampleInput2" class="form-label">Link do produto</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Link do produto">
+                    <input type="text" class="form-control" id="link" placeholder="Link do produto" min="0">
                 </div>
             </form>
 
@@ -89,13 +89,14 @@
 
             <!-- Botões: Cadastrar Produto / Cancelar -->
             <a href="meusprodutos.html">
-                <button type="button" class="btn btn-primary">Cadastrar Produto</button>
+                <button type="button" class="btn btn-primary" onclick="cadastrar()">Cadastrar Produto</button>
             </a>
             <a href="meusprodutos.html">
-                <button type="button" class="btn btn-primary">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="cancelar()">Cancelar</button>
             </a>
         </div>
     </div>
+    <script src="../scripts/cadastrarprodutos.js"></script>
 </body>
 </html>
 

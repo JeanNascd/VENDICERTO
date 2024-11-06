@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,99 +10,86 @@
 </head>
 <body class="bcg_CinzaEscuro">
 
-    <div class="configuracao">
-        <div class="row">
-          <div class="col">
-            <nav class="navbar navbar-expand-lg bcg_CinzaEscuro" data-bs-theme="dark">
-                <div class="container-fluid d-flex">
-                    <div>
-                    <a class="navbar-brand" href="">
-                        <img src="../images/logo_vendiCerto.webp" alt="Logotipo VendiCerto" width="70" height="65">
-                    </a>
-                    </div>
-                    <div>
-                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a class="nav-link cor_Branco mx-3" href="../pages/calculadora.html">CALCULADORA</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link cor_Branco mx-3" href="../pages/meusprodutos.html">MEUS PRODUTOS</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link cor_Branco mx-3" href="../pages/configuracoes.html">CONFIGURAÇÕES</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link cor_Branco mx-3" href="../pages/ajuda.html">AJUDA</a>
-                      </li>
-                      <li>
-                        <a href="../index.html">
-                          <button type="button" class="btn btn-warning" href="../index.html">SAIR</button>
-                        </a>
-                      </li>
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bcg_CinzaEscuro" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="">
+                    <img src="../images/logo_vendiCerto.webp" alt="Logotipo VendiCerto" width="70" height="65">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link cor_Branco" href="../pages/calculadora.html">CALCULADORA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link cor_Branco" href="../pages/meusprodutos.html">MEUS PRODUTOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link cor_Branco" href="../pages/configuracoes.html">CONFIGURAÇÕES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link cor_Branco" href="../pages/ajuda.html">AJUDA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../index.html">
+                                <button type="button" class="btn btn-warning">SAIR</button>
+                            </a>
+                        </li>
                     </ul>
-                  </div>
                 </div>
-                </div>
-              </nav>  
-          </div>
-        </div>
-    </div>
+            </div>
+        </nav>
 
-        <div class="row">
-          <div class="col-12 col-md-2">
-            <div class="sidebar">
+        <div class="row flex-column flex-md-row">
+            <div class="col-12 col-md-2 sidebar p-2">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" aria-disabled="true"><h6><strong>CONFIGURAÇÕES</strong></h6></a>
-                      </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="../pages/configuracoes.html">Perfil</a>
+                        <a class="nav-link" aria-disabled="true"><h6 class="cor_Branco"><strong>CONFIGURAÇÕES</strong></h6></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../pages/Embalagens.html">Embalagens</a>
+                        <a class="nav-link active" href="../pages/configuracoes.html">Perfil</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../pages/frete.html">Frete</a>
+                        <a class="nav-link" href="../pages/Embalagens.html">Embalagens</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../pages/demaiscustos.html">Demais Custos</a>
+                        <a class="nav-link" href="../pages/frete.html">Frete</a>
                     </li>
-                  </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/demaiscustos.html">Demais Custos</a>
+                    </li>
+                </ul>
             </div>
-          </div>
 
-          <div class="col-md-10 col-12">
-
-            <div class="main">
-                <h1 class="perfil cor_Branco">Perfil</h1><br>
-            </div>
-        
-            <div class="card main-content bcg_Amarelo">
-                <div class="card-body">
-                  <h3 class="card-title text-center bcg_Roxo color: cor_Branco">Atualizar Senha</h3>
-        
-                  <div class="Senha">
-                    <label for="exampleFormControlInput1" class="form-label"><h4>Senha Atual</h4></label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1">
-                  </div>
-                  <div class="Senha">
-                    <label for="exampleFormControlInput1" class="form-label"><h4>Nova Senha</h4></label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1">
-                  </div>
-                  <div class="Senha">
-                    <label for="exampleFormControlInput1" class="form-label"><h4>Confirmar Nova Senha</h4></label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1">
-                  </div>
-                  <div class="botao_atualizar text-center">
-                    <button type="button" class="btn btn-lg btn-atualizar cor_Branco">Atualizar</button>
-                  </div>
+            <div class="col-12 col-md-10 p-3">
+                <h1 class="perfil cor_Branco text-center text-md-start">Perfil</h1>
+                <div class="card main-content bcg_Amarelo mt-4">
+                    <div class="card-body">
+                        <h3 class="card-title text-center bcg_Roxo cor_Branco p-2">Atualizar Senha</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="currentPassword" class="form-label"><h4>Senha Atual</h4></label>
+                                <input type="password" class="form-control" id="currentPassword">
+                            </div>
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label"><h4>Nova Senha</h4></label>
+                                <input type="password" class="form-control" id="newPassword">
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label"><h4>Confirmar Nova Senha</h4></label>
+                                <input type="password" class="form-control" id="confirmPassword">
+                            </div>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-lg btn-atualizar cor_Branco bcg_Roxo">Atualizar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
-          </div>
+            </div>
         </div>
+    </div>
 </body>
 </html>
