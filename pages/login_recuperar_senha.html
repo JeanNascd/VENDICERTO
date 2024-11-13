@@ -33,7 +33,11 @@
       </div>
       <div class="card mb-3 bgc_amarelo">
         <div class="card-body">
-          <form class="bgc_cinzaClaro p-3">
+          <form
+            class="bgc_cinzaClaro p-3"
+            onsubmit="return exibirModal(event)"
+            id="form_recSenha"
+          >
             <h1 class="text-center bgc_roxo color_branco p-2">
               Esqueci minha senha
             </h1>
@@ -42,11 +46,19 @@
             </p>
             <div class="mb-2">
               <label for="login_usuario" class="form-label mt-3">E-mail:</label>
-              <input type="email" class="form-control" id="login_usuario" />
+              <input
+                type="email"
+                class="form-control"
+                id="login_usuario"
+                required
+              />
+              <div id="liveAlertPlaceholder"></div>
               <div class="text-center">
                 <button
                   type="submit"
                   class="btn btn-primary my-3 px-5 py-3 mt-4"
+                  id="btn_recuperarSenha"
+                  data-bs-toggle="modal"
                 >
                   Enviar
                 </button>
@@ -58,6 +70,50 @@
               >Voltar para o login</a
             >
           </p>
+        </div>
+      </div>
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="div_modal"
+        tabindex="-1"
+        aria-labelledby="meuModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content bgc_cinzaClaro">
+            <div class="modal-header">
+              <h5
+                class="modal-title bgc_roxo color_branco p-3 rounded-2 w-100 text-center"
+                id="meuModalLabel"
+              >
+                Solicitação recebida com sucesso
+              </h5>
+              <!-- <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Fechar"
+              > -->
+              <!-- <span aria-hidden="true">&times;</span>
+              </button> -->
+            </div>
+            <div class="modal-body lh-base f-3">
+              Se o endereço de e-mail digitado estiver correto, enviaremos um
+              e-mail com instruções sobre como redefinir sua senha. Se o e-mail
+              não estiver na sua caixa de entrada, lembre-se de verificar sua
+              pasta de spam.
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary bgc_roxo border border-0"
+                data-bs-dismiss="modal"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </main>

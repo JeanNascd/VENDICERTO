@@ -1,102 +1,71 @@
-// Embalagens armazenar dados da embalagem e editar e excluir embalagens, responsividade (revisar e corrigir se necessário)
+const descricaoInput = document.getElementById("embalagemDescricao");
+const precoInput = document.getElementById("precoEmbalagem");
+const tabelaBody = document.querySelector(".table tbody");
+const adicionarBtn = document.querySelector(".btn-adicionar");
 
+function adicionarEmbalagem() {
+    const descricao = descricaoInput.value.trim();
+    const preco = precoInput.value.trim();
 
-document.addEventListener('DOMContentLoaded', () => {
-    const embalagemForm = document.querySelector('form');
-    const embalagemTableBody = document.querySelector('table tbody');
-
-    // Carregar embalagens salvas no localStorage
-    loadEmbalagens();
-
-    // Adicionar nova embalagem
-    embalagemForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const descricao = document.getElementById('embalagemDescricao').value;
-        const peso = document.getElementById('embalagemPeso').value;
-        const altura = document.getElementById('embalagemAltura').value;
-        const largura = document.getElementById('embalagemLargura').value;
-        const espessura = document.getElementById('embalagemEspessura').value;
-
-        if (descricao && peso && altura && largura && espessura) {
-            const novaEmbalagem = { descricao, peso, altura, largura, espessura };
-            addEmbalagem(novaEmbalagem);
-            saveEmbalagens();
-            embalagemForm.reset();
-        } else {
-            alert('Por favor, preencha todos os campos.');
-        }
-    });
-
-    // Função para adicionar embalagem à tabela e localStorage
-    function addEmbalagem(embalagem) {
-        const row = document.createElement('tr');
-
-        // Adicionando dados
-        row.innerHTML = `
-            <td>${embalagem.descricao}</td>
-            <td>${embalagem.peso}</td>
-            <td>${embalagem.altura}</td>
-            <td>${embalagem.largura}</td>
-            <td>${embalagem.espessura}</td>
-            <td>
-                <button class="btn btn-sm btn-warning edit-btn">Editar</button>
-                <button class="btn btn-sm btn-danger delete-btn">Excluir</button>
-            </td>
-        `;
-
-        // Ações de editar e excluir
-        row.querySelector('.edit-btn').addEventListener('click', () => editEmbalagem(row, embalagem));
-        row.querySelector('.delete-btn').addEventListener('click', () => deleteEmbalagem(row, embalagem));
-
-        embalagemTableBody.appendChild(row);
+    if (descricao === "" || preco === "") {
+        alert("Por favor, preencha todos os campos.");
+        return;
     }
 
-    // Função para editar embalagem
-    function editEmbalagem(row, embalagem) {
-        document.getElementById('embalagemDescricao').value = embalagem.descricao;
-        document.getElementById('embalagemPeso').value = embalagem.peso;
-        document.getElementById('embalagemAltura').value = embalagem.altura;
-        document.getElementById('embalagemLargura').value = embalagem.largura;
-        document.getElementById('embalagemEspessura').value = embalagem.espessura;
+    const novaLinha = document.createElement("tr");
 
-        deleteEmbalagem(row, embalagem);
-    }
+    const colunaDescricao = document.createElement("td");
+    colunaDescricao.textContent = descricao;
 
-    // Função para excluir embalagem
-    function deleteEmbalagem(row, embalagem) {
-        row.remove();
-        let embalagens = getEmbalagens();
-        embalagens = embalagens.filter(item => item.descricao !== embalagem.descricao);
-        localStorage.setItem('embalagens', JSON.stringify(embalagens));
-    }
+    const colunaPreco = document.createElement("td");
+    colunaPreco.textContent = preco;
 
-    // Carregar embalagens do localStorage
-    function loadEmbalagens() {
-        const embalagens = getEmbalagens();
-        embalagens.forEach(addEmbalagem);
-    }
+    const colunaAcoes = document.createElement("td");
 
-    // Obter embalagens do localStorage
-    function getEmbalagens() {
-        return JSON.parse(localStorage.getItem('embalagens') || '[]');
-    }
+    // Criação do ícone de edição
+    const imgEditar = document.createElement("img");
+    imgEditar.src = "../images/botao_editar.svg";
+    imgEditar.alt = "Editar";
+    imgEditar.className = "me-2";
+    imgEditar.style.cursor = "pointer";
+    imgEditar.onclick = () => editarEmbalagem(novaLinha);
 
-    // Salvar embalagens no localStorage
-    function saveEmbalagens() {
-        const rows = Array.from(embalagemTableBody.querySelectorAll('tr'));
-        const embalagens = rows.map(row => {
-            const cells = row.querySelectorAll('td');
-            return {
-                descricao: cells[0].textContent,
-                peso: cells[1].textContent,
-                altura: cells[2].textContent,
-                largura: cells[3].textContent,
-                espessura: cells[4].textContent
-            };
-        });
-        localStorage.setItem('embalagens', JSON.stringify(embalagens));
-    }
+    // Criação do ícone de exclusão
+    const imgExcluir = document.createElement("img");
+    imgExcluir.src = "../images/trash.svg";
+    imgExcluir.alt = "Excluir";
+    imgExcluir.style.cursor = "pointer";
+    imgExcluir.onclick = () => excluirEmbalagem(novaLinha);
+
+    // Adiciona os ícones na coluna de ações
+    colunaAcoes.appendChild(imgEditar);
+    colunaAcoes.appendChild(imgExcluir);
+
+    novaLinha.appendChild(colunaDescricao);
+    novaLinha.appendChild(colunaPreco);
+    novaLinha.appendChild(colunaAcoes);
+
+    tabelaBody.appendChild(novaLinha);
+
+    descricaoInput.value = "";
+    precoInput.value = "";
+}
+
+function editarEmbalagem(linha) {
+    const descricao = linha.children[0].textContent;
+    const preco = linha.children[1].textContent;
+
+    descricaoInput.value = descricao;
+    precoInput.value = preco;
+
+    tabelaBody.removeChild(linha);
+}
+
+function excluirEmbalagem(linha) {
+    tabelaBody.removeChild(linha);
+}
+
+adicionarBtn.addEventListener("click", (event) => {
+    event.preventDefault(); 
+    adicionarEmbalagem();
 });
-
-
-

@@ -90,11 +90,8 @@ h1{
         width: 40% !important;
     }
 }
-/*adicionar logo*/
-/*
-FFD21F
-552583
-333333
-C4C4C4
-FFFFFF
-*/
+
+input:invalid {
+    color: red;
+}
+

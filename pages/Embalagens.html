@@ -2,9 +2,8 @@
 <html lang="pt-br">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <net/npm/bootstrap@5script src="https://cdn.jsdelivr..3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN6jIeHz" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN6jIeHz" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="../styles/configuracoes.css">
-    <script src="../scripts/embalagens.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embalagens</title>
@@ -62,27 +61,13 @@
 
                         <div class="container">
                             <div class="row mb-3">
-                                <div class="col-md-8 col-12">
+                                <div class="col-md-8">
                                     <label for="embalagemDescricao" class="form-label"><h5>Descrição</h5></label>
-                                    <input type="text" class="form-control" id="embalagemDescricao">
+                                    <input type="text" class="form-control" id="embalagemDescricao" placeholder="Descrição da embalagem">
                                 </div>
-                                <div class="col-md-4 col-12">
-                                    <label for="embalagemPeso" class="form-label"><h5>Peso</h5></label>
-                                    <input type="number" class="form-control" id="embalagemPeso">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-4 col-12">
-                                    <label for="embalagemAltura" class="form-label"><h5>Altura</h5></label>
-                                    <input type="number" class="form-control" id="embalagemAltura">
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <label for="embalagemLargura" class="form-label"><h5>Largura</h5></label>
-                                    <input type="number" class="form-control" id="embalagemLargura">
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <label for="embalagemEspessura" class="form-label"><h5>Espessura</h5></label>
-                                    <input type="number" class="form-control" id="embalagemEspessura">
+                                <div class="col-md-4">
+                                    <label for="precoEmbalagem" class="form-label"><h5>Preço</h5></label>
+                                    <input type="number" class="form-control" id="precoEmbalagem" placeholder="Preço da embalagem">
                                 </div>
                             </div>
                             <div class="text-center">
@@ -100,23 +85,15 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Descrição</th>
-                                        <th scope="col">Peso (g)</th>
-                                        <th scope="col">Altura (cm)</th>
-                                        <th scope="col">Largura (cm)</th>
-                                        <th scope="col">Espessura (cm)</th>
+                                        <th scope="col">Preço</th>
                                         <th scope="col">Ação</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Caixa Grande</td>
-                                        <td>10</td>
-                                        <td>5</td>
-                                        <td>10</td>
-                                        <td>3</td>
+                                        <td></td>
+                                        <td></td>
                                         <td>
-                                            <img src="../images/botao_editar.svg" alt="icone para editar">
-                                            <img src="../images/trash.svg" alt="icone para deletar">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -129,4 +106,5 @@
     </div>
 
 </body>
+<script src="../scripts/embalagens.js"></script>
 </html>
