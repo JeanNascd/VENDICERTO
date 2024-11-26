@@ -1,62 +1,83 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Função para carregar os dados do localStorage
     function carregarDados() {
-        // Verifica se já existem dados armazenados no localStorage
         const dados = JSON.parse(localStorage.getItem('demaisCustos'));
-        
-        if (dados) {
-            // Preenche os inputs com os valores salvos
-            document.getElementById('impostos').value = dados.impostos || 0;
-            document.getElementById('comissaoclassica').value = dados.comissaoclassica || 0;
-            document.getElementById('comissaopremium').value = dados.comissaopremium || 0;
-            document.getElementById('anuncio').value = dados.anuncio || 0;
-            document.getElementById('perdas_devolucoes').value = dados.perdas_devolucoes || 0;
+        const campos = ['impostos', 'comissaoclassica', 'comissaopremium', 'anuncio', 'perdas_devolucoes'];
+
+        campos.forEach(campo => {
+            document.getElementById(campo).value = dados?.[campo] || 0;
+        });
+    }
+
+    // Exibir mensagem de erro ao lado do campo
+    function exibirErro(campo, mensagem) {
+        let erro = document.querySelector(`#${campo} ~ .error-message`);
+        if (!erro) {
+            erro = document.createElement('span');
+            erro.className = 'error-message';
+            erro.style.color = 'red';
+            erro.style.fontSize = '12px';
+            erro.style.marginLeft = '10px';
+            document.getElementById(campo).after(erro);
+        }
+        erro.textContent = mensagem;
+    }
+
+    // Remover mensagem de erro
+    function limparErro(campo) {
+        const erro = document.querySelector(`#${campo} ~ .error-message`);
+        if (erro) erro.remove();
+    }
+
+    // Validação de valores positivos
+    function validarValor(campo) {
+        const valor = parseFloat(document.getElementById(campo).value);
+        if (isNaN(valor) || valor < 0) {
+            exibirErro(campo, 'Digite um número positivo válido.');
+            return false;
         } else {
-            // Valores padrão caso não haja dados no localStorage
-            document.getElementById('impostos').value = 0;
-            document.getElementById('comissaoclassica').value = 0;
-            document.getElementById('comissaopremium').value = 0;
-            document.getElementById('anuncio').value = 0;
-            document.getElementById('perdas_devolucoes').value = 0;
+            limparErro(campo);
+            return true;
         }
     }
 
     // Função para atualizar os valores no localStorage
     function atualizarValores() {
-        const impostos = document.getElementById('impostos').value;
-        const comissaoclassica = document.getElementById('comissaoclassica').value;
-        const comissaopremium = document.getElementById('comissaopremium').value;
-        const anuncio = document.getElementById('anuncio').value;
-        const perdasDevolucoes = document.getElementById('perdas_devolucoes').value;
+        const campos = ['impostos', 'comissaoclassica', 'comissaopremium', 'anuncio', 'perdas_devolucoes'];
+        let dadosValidos = true;
+        const dados = {};
 
-        // Verifica se algum campo está vazio
-        if (!impostos || !comissaoclassica || !comissaopremium || !anuncio || !perdasDevolucoes) {
-            alert('Por favor, preencha todos os campos!');
-            return; // Impede o salvamento se algum campo estiver vazio
+        campos.forEach(campo => {
+            if (!validarValor(campo)) {
+                dadosValidos = false;
+            } else {
+                dados[campo] = parseFloat(document.getElementById(campo).value);
+            }
+        });
+
+        if (!dadosValidos) {
+            alert('Por favor, corrija os campos com erros antes de continuar.');
+            return;
         }
-
-        // Cria um objeto com os dados atualizados
-        const dados = {
-            impostos: parseFloat(impostos),
-            comissaoclassica: parseFloat(comissaoclassica),
-            comissaopremium: parseFloat(comissaopremium),
-            anuncio: parseFloat(anuncio),
-            perdas_devolucoes: parseFloat(perdasDevolucoes)
-        };
 
         // Salva os dados no localStorage
         localStorage.setItem('demaisCustos', JSON.stringify(dados));
-
-        // Exibe o alerta informando que os dados foram atualizados com sucesso
         alert('As taxas foram atualizadas com sucesso!');
     }
 
-    // Carregar os dados ao carregar a página
+    // Adiciona validação em tempo real nos inputs
+    function adicionarValidacaoTempoReal() {
+        const campos = ['impostos', 'comissaoclassica', 'comissaopremium', 'anuncio', 'perdas_devolucoes'];
+        campos.forEach(campo => {
+            const input = document.getElementById(campo);
+            input.addEventListener('input', () => validarValor(campo));
+        });
+    }
+
+    // Inicializar
     carregarDados();
+    adicionarValidacaoTempoReal();
 
     // Adicionar evento de clique no botão "Configurar"
-    const botaoConfigurar = document.querySelector('.btn-configurar');
-    botaoConfigurar.addEventListener('click', function () {
-        atualizarValores();
-    });
+    document.querySelector('.btn-configurar').addEventListener('click', atualizarValores);
 });

@@ -1,9 +1,28 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Função para exibir mensagem de erro ao lado de um campo
+    function exibirErro(campo, mensagem) {
+        let erro = document.querySelector(`#${campo.id} ~ .error-message`);
+        if (!erro) {
+            erro = document.createElement('span');
+            erro.className = 'error-message';
+            erro.style.color = 'red';
+            erro.style.fontSize = '12px';
+            erro.style.marginLeft = '10px';
+            campo.after(erro);
+        }
+        erro.textContent = mensagem;
+    }
+
+    // Função para limpar a mensagem de erro
+    function limparErro(campo) {
+        const erro = document.querySelector(`#${campo.id} ~ .error-message`);
+        if (erro) erro.remove();
+    }
+
     // Função para carregar os dados do localStorage
     function carregarDados() {
-        // Verifica se já existem dados armazenados no localStorage
         const dados = JSON.parse(localStorage.getItem('frete'));
-        
+
         if (dados) {
             // Preenche os inputs com os valores salvos
             for (const key in dados) {
@@ -15,28 +34,32 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             // Inicializa todos os inputs com valor 0 caso não tenha valores salvos
             const inputs = document.querySelectorAll('input[type="number"]');
-            inputs.forEach(input => input.value = 0);
+            inputs.forEach(input => (input.value = 0));
         }
     }
 
     // Função para salvar os dados no localStorage
     function salvarDados() {
         const frete = {};
-
-        // Coleta os dados dos inputs
         const inputs = document.querySelectorAll('input[type="number"]');
-        let todosPreenchidos = true;
+        let todosValidos = true;
 
         inputs.forEach(input => {
-            if (!input.value) {
-                todosPreenchidos = false;
+            const valor = parseFloat(input.value);
+
+            // Verifica se o campo está vazio ou possui valor inválido
+            if (!input.value.trim() || isNaN(valor) || valor < 0) {
+                todosValidos = false;
+                exibirErro(input, "Por favor, insira um valor válido (>= 0).");
+            } else {
+                limparErro(input);
+                frete[input.id] = valor;
             }
-            frete[input.id] = parseFloat(input.value);
         });
 
-        // Se algum campo estiver vazio, exibe o alerta
-        if (!todosPreenchidos) {
-            alert('Por favor, preencha todos os campos!');
+        // Se houver algum erro, não salva os dados
+        if (!todosValidos) {
+            alert("Corrija os campos destacados antes de salvar.");
             return;
         }
 
@@ -50,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Carregar os dados ao carregar a página
     carregarDados();
 
-    // Adiciona o evento de click no botão salvar
+    // Adiciona o evento de clique no botão salvar
     const botaoSalvar = document.getElementById('salvar');
     botaoSalvar.addEventListener('click', salvarDados);
 });
